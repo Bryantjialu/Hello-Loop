@@ -19,13 +19,13 @@ void createChild(int n, int flag)
     { //如果pid为0则表示当前执行的是子进程
         printf("这是子进程%d，进程标识符是%d\n", n, getpid());
         pid_t pid = fork();
-        createChild(n+1,pid);
+        createChild(n+1, pid);
     }
     else
     { //否则为父进程
         printf("这是子进程%d的父进程，进程标志是%d\n", n, getpid());
         pid_t pid = fork();
-        createChild(n+1,pid);
+        createChild(3, pid);
     }
 }
 int main(void)
