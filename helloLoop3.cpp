@@ -29,7 +29,7 @@ void createChild(int n, int flag)
     }
 }
 int main(void)
-{
+{ 
     pid_t pid1; //进程标识符
 
     pid1 = fork(); //创建一个新的进程
