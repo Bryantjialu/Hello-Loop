@@ -3,12 +3,10 @@
 
 using namespace std;
 
-
+#define ever (;;)
 int main(){
     
-    while(true){
-        cout << "111" << endl;
-    }
+    for ever;
 
 
     system("pause");
