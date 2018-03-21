@@ -40,37 +40,37 @@ class childProcessBinaryTree {
 
     void createProcess(int currentLevel) {
         left = fork();
-        right = fork();
 
         if (left < 0) {
             cout << "Created process failed" << endl;
         } else if (left == 0) { // child process
-            cout << "This is child process(" << getpid() << ")" << endl;
+            cout << "This is left child process(" << getpid() << ")" << endl;
             if (currentLevel < level) {
                 this->createProcess(currentLevel + 1);
             }
         } else if (left > 0) { // parent process
-            cout << "Process(" << getpid() << ") has created a child process(" << left << ")" << endl;
-        }
+            cout << "Process(" << getpid() << ") has created a left child process(" << left << ")" << endl;
 
-        if (right < 0) {
-            cout << "Created process failed" << endl;
-        } else if (right == 0) { // child process
-            cout << "This is child process(" << getpid() << ")" << endl;
-            if (currentLevel < level) {
-                this->createProcess(currentLevel + 1);
+            right = fork();
+
+            if (right < 0) {}
+            else if (right == 0) { //child process
+                cout << "This is right child process(" << getpid() << ")" << endl;
+                if (currentLevel < level) {
+                    this->createProcess(currentLevel + 1);
+                }
+            } else {
+                cout << "Process(" << getpid() << ") has created a right child process(" << right << ")" << endl;
             }
-        } else if (right > 0) { // parent process
-            cout << "Process(" << getpid() << ") has created a child process(" << left << ")" << endl;
         }
-
-        system("read");
-        exit(0);
     }
+
 public:
 
     childProcessBinaryTree(int level): level(level) {
         this->createProcess(1);
+
+	system("read");
     }
 };
 
