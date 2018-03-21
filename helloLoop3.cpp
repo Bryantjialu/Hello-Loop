@@ -1,9 +1,12 @@
-#include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
 
 #define ever (;;)
 
+using namespace std;
+
+/*
 void createChild(int n, int flag)
 {
 
@@ -28,6 +31,49 @@ void createChild(int n, int flag)
         return;
     }
 }
+*/
+
+class childProcessBinaryTree {
+    int level
+    pid_t left;
+    pid_t right;
+
+    createProcess(int currentLevel) {
+        left = fork();
+        right = fork();
+
+        if (left < 0) {
+            cout << "Created process failed" << endl;
+        } else if (left == 0) { // child process
+            cout << "This is child process(" << getpid() << ")" << endl;
+            if (currentLevel < level) {
+                this.createProcess(currentLevel + 1);
+            }
+        } else if (left > 0) { // parent process
+            cout << "Process(" << getpid() << ") has created a child process(" << left << ")" << endl;
+        }
+
+        if (right < 0) {
+            cout << "Created process failed" << endl;
+        } else if (right == 0) { // child process
+            cout << "This is child process(" << getpid() << ")" << endl;
+            if (currentLevel < level) {
+                this.createProcess(currentLevel + 1);
+            }
+        } else if (right > 0) { // parent process
+            cout << "Process(" << getpid() << ") has created a child process(" << left << ")" << endl;
+        }
+
+        system("pause");
+        exit(0);
+    }
+public:
+
+    childProcessBinaryTree(int level): level(level) {
+        this.createProcess(1);
+    }
+}
+
 int main(void)
 { 
     pid_t pid1; //进程标识符
