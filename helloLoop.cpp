@@ -5,6 +5,7 @@ int main (void)
 {
    pid_t pid1,pid2;   //进程标识符
    pid1 = fork();      //创建一个新的进程
+   while(true){
    if(pid1 < 0)        //如果返回的pid小于0则标示创建进程失败
      {
         printf("创建进程失败!\n");
@@ -33,6 +34,7 @@ int main (void)
      }
    }
    printf("这是一个多进程测试，即将退出!\n");
+   }
    return 0;      //返回
 }
 
