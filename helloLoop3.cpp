@@ -34,11 +34,11 @@ void createChild(int n, int flag)
 */
 
 class childProcessBinaryTree {
-    int level
+    int level;
     pid_t left;
     pid_t right;
 
-    createProcess(int currentLevel) {
+    void createProcess(int currentLevel) {
         left = fork();
         right = fork();
 
@@ -47,7 +47,7 @@ class childProcessBinaryTree {
         } else if (left == 0) { // child process
             cout << "This is child process(" << getpid() << ")" << endl;
             if (currentLevel < level) {
-                this.createProcess(currentLevel + 1);
+                this->createProcess(currentLevel + 1);
             }
         } else if (left > 0) { // parent process
             cout << "Process(" << getpid() << ") has created a child process(" << left << ")" << endl;
@@ -58,30 +58,33 @@ class childProcessBinaryTree {
         } else if (right == 0) { // child process
             cout << "This is child process(" << getpid() << ")" << endl;
             if (currentLevel < level) {
-                this.createProcess(currentLevel + 1);
+                this->createProcess(currentLevel + 1);
             }
         } else if (right > 0) { // parent process
             cout << "Process(" << getpid() << ") has created a child process(" << left << ")" << endl;
         }
 
-        system("pause");
+        system("read");
         exit(0);
     }
 public:
 
     childProcessBinaryTree(int level): level(level) {
-        this.createProcess(1);
+        this->createProcess(1);
     }
-}
+};
 
 int main(void)
 { 
-    pid_t pid1; //进程标识符
+    // pid_t pid1; //进程标识符
 
-    pid1 = fork(); //创建一个新的进程
-    createChild(1, pid1);
+    //pid1 = fork(); //创建一个新的进程
+    // createChild(1, pid1);
 
-    for ever;
+    // for ever;
+    
+    new childProcessBinaryTree(3);
+
 
     return 0; //返回
 }
