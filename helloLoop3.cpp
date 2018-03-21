@@ -6,10 +6,6 @@
 
 void createChild(int n, int flag)
 {
-    if (n == 4)
-    {
-        return;
-    }
 
     if (flag < 0)
     { //如果返回的pid小于0则标示创建进程失败
@@ -26,6 +22,10 @@ void createChild(int n, int flag)
         printf("这是子进程%d的父进程，进程标志是%d\n", n, getpid());
         pid_t pid = fork();
         createChild(3, pid);
+    }
+    
+    if (n == 3) {
+        return;
     }
 }
 int main(void)
