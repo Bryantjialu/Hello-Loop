@@ -7,15 +7,24 @@ using namespace std;
 int main(){
     
    // for ever;
-    int fpid;
-    fpid = fork();
+    int fpid1, fpid2;
+    fpid1 = fork();
 
-    if (fpid < 0) {
-        cout << "error in fork!" << endl;
-    } else if(fpid == 0) {
-        cout << "this is child process, pid " + getpid());
-    } else {
-        cout << "this is parent process, pid " + getpid());
+    if (fpid1 < 0) {
+        cout << "创建进程失败" << endl; //创建进程失败
+    } else if(fpid1 == 0) { //返回0是子进程
+        cout << "这是第一个子进程, pid为 " + getpid()) << endl;
+    } else {    //返回2是父进程
+        cout << "这是父进程, pid " + getpid()) << endl;
+
+        fpid2 = fork();
+        if (fpid <0) {
+            cout << "创建第二个进程失败" << endl;
+        } else if (fpid2 == 0) {
+            cout << "这是第二个子进程，pid为 " + getpid()) << endl;
+        } else {
+            cout << "这是第二个子进程的父进程，pid为 " + getpid() << endl;
+        }
     }
 
     return 0;
