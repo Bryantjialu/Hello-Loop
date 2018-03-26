@@ -5,7 +5,7 @@
 #define ever (;;)
 
 using namespace std;
-
+int pause;
 /*
 void createChild(int n, int flag)
 {
@@ -37,7 +37,6 @@ class childProcessBinaryTree {
     int level;
     pid_t left;
     pid_t right;
-
     void createProcess(int currentLevel) {
         left = fork();
 
@@ -66,25 +65,15 @@ class childProcessBinaryTree {
     }
 
 public:
-
     childProcessBinaryTree(int level): level(level) {
         this->createProcess(1);
 
-	system("read");
+	cin >> pause;
     }
 };
 
 int main(void)
 { 
-    // pid_t pid1; //进程标识符
-
-    //pid1 = fork(); //创建一个新的进程
-    // createChild(1, pid1);
-
-    // for ever;
-    
     new childProcessBinaryTree(3);
-
-
     return 0; //返回
 }
