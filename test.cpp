@@ -5,6 +5,7 @@ using namespace std;
 
 int main() {
     while (true) {
+	cout << "Run" << endl;
         clock_t start, end;
         start = clock();
 
