@@ -10,7 +10,7 @@ int main() {
         start = clock();
 
         while (clock() - start < 5 * 1000000) {
-
+            //do nothing
         }
         cout << "sleeping" << endl;
         sleep(5); //linux下是5swindows下是5微秒

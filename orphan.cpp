@@ -12,6 +12,5 @@ int main(){
         sleep(4);
         cout << "dead" << endl;
     }
-
     return 0;
 }
